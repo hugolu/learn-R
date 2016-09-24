@@ -16,22 +16,56 @@ list | 列表
 ### 輸入簡單資料
 
 ```r
-> a <- 12.3 # numeric
-> a
+> x <- 12.3 # numeric
+> x
 [1] 12.3
-> b <- 123 # integer
-> b
+> x <- 123 # integer
+> x
 [1] 123
-> c <- TRUE # logical
-> c
+> x <- TRUE # logical
+> x
 [1] TRUE
-> d <- "x" # character
-> d
+> x <- "x" # character
+> x
 [1] "x"
-> e <- "hello world" # string
-> e
+> x <- "hello world" # string
+> x
 [1] "hello world"
-> e <- 12 + 3i # complex
-> e
+> x <- 12 + 3i # complex
+> x
 [1] 12+3i
+```
+
+### 輸入向量資料 - 使用 `c()`
+```r
+> x <- c(1,2,3)
+> x
+[1] 1 2 3
+> c(4,5,6) -> y
+> y
+[1] 4 5 6
+> 1 / x
+[1] 1.0000000 0.5000000 0.3333333
+> y <- c("apple", "banana", "cherry")
+> y
+[1] "apple"  "banana" "cherry"
+> z <- c(1:5)
+> z
+[1] 1 2 3 4 5
+> z.tmp <- z > 2
+> z.tmp
+[1] FALSE FALSE  TRUE  TRUE  TRUE
+```
+
+### 輸入序列向量 - 使用 `seq()`
+```r
+> x <- seq(1,5,1)
+> x
+[1] 1 2 3 4 5
+> y <- seq(5,1,-1)
+> y
+[1] 5 4 3 2 1
+> z <- rep(1,5)
+> z
+[1] 1 1 1 1 1
 ```
