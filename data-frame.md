@@ -49,3 +49,33 @@
 [1] 68
 > detach(member)
 ```
+
+## 輸出入到外部檔案
+
+```r
+> ?write.table
+```
+- 讀取說明文件
+
+```r
+> write.table(member, file="member.csv", sep=",")
+```
+- 寫出到 "member.csv"
+
+```shell
+$ cat member.csv
+"id","height","weight"
+"1",1,170,70
+"2",2,175,72
+"3",3,165,62
+```
+
+```r
+> member2 = read.table("member.csv", sep=",")
+> member2
+  id height weight
+1  1    170     70
+2  2    175     72
+3  3    165     62
+```
+- 由 "member.csv" 讀入
