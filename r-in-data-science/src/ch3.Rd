@@ -43,3 +43,28 @@ outer(vec1, vec2, FUN = function(x,y) (x*y))
 
 # repeat evaluation of an expression
 replicate(3, sum(runif(10)))
+
+# subset
+subset(iris, Species == 'setosa')
+
+# transform
+transform(iris, Sepal.LW = Sepal.Length*Sepal.Width)
+
+# grouping
+set.seed(1)
+num <- runif(20)*100
+data <- data.frame(num)
+
+q25 <- quantile(data$num, 0.25)
+q50 <- quantile(data$num, 0.50)
+q75 <- quantile(data$num, 0.75)
+groupvec <- c(min(data$num), q25, q50, q75, max(data$num))
+labels <- c('A', 'B', 'C', 'D')
+with(data, cut(num, breaks = groupvec, labels = labels, include.lowest = TRUE))
+
+# encode a vector as a factor (the terms ‘category’ and ‘enumerated type’ are also used for factors)
+vec <- 1:8 %% 2
+factor(vec, labels = c('odd', 'even'))
+
+vec <- 1:8 %% 3
+factor(vec, labels = c('A', 'B', 'C'))
