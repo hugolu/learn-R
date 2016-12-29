@@ -1,3 +1,5 @@
+library(reshape2)
+
 # vector operation
 func <- function(x) {
   if (x %% 2 == 0) 'even' else 'odd'
@@ -68,3 +70,20 @@ factor(vec, labels = c('odd', 'even'))
 
 vec <- 1:8 %% 3
 factor(vec, labels = c('A', 'B', 'C'))
+
+# Stack or Unstack Vectors from a Data Frame or List
+data_l <- stack(iris[, 1:4])
+data_w <- unstack(data_l)
+
+# mean of each specie
+subdata <- iris[,4:5]
+data_w <- unstack(subdata)
+colMeans(data_w)
+
+library(reshape2)
+dcast(subdata, Species~., value.var = 'Petal.Width', fun = mean)
+
+# melt
+data <- array(c(1:22, NA, "wo"), c(2,3,4))
+melt(data)
+
