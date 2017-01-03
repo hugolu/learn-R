@@ -105,3 +105,11 @@ dcast(tips_melt, sex~variable, value.var = 'value', fun = mean) # variable={tota
 tips_mean <- dcast(tips_melt, sex+smoker~variable, mean)
 tips_mean$rate <- with(tips_mean, tip/total_bill)
 tips_mean
+
+# ddply
+library(plyr)
+
+ratio_fun <- function(x) { sum(x$tip) / sum(x$total_bill) }
+
+ddply(tips, 'sex', ratio_fun)
+ddply(tips, sex~smoker, ratio_fun)
