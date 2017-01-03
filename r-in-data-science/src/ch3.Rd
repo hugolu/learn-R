@@ -83,7 +83,25 @@ colMeans(data_w)
 library(reshape2)
 dcast(subdata, Species~., value.var = 'Petal.Width', fun = mean)
 
-# melt
-data <- array(c(1:22, NA, "wo"), c(2,3,4))
-melt(data)
+# long/wide format
+iris_long <- melt(iris, id='Species')
 
+dcast(data = iris_long, formula = Species~variable, value.var = 'value', fun = mean)
+dcast(iris_long, Species~variable, mean)
+
+# dcast
+head(tips)
+
+dcast(tips, sex~., value.var = 'tip', fun = mean)
+dcast(tips, sex~size, value.var = 'tip', fun=mean)
+
+dcast(tips, sex~., value.var = 'tip', fun = mean)
+dcast(tips, sex~., value.var = 'total_bill', fun=mean)
+
+tips_melt = melt(data = tips, id.vars = c('sex', 'smoker', 'time', 'size', 'day'))
+dcast(tips_melt, sex~variable, value.var = 'value', fun = mean) # variable={total_bill,tip}
+
+# dcast can deal with multiple variables
+tips_mean <- dcast(tips_melt, sex+smoker~variable, mean)
+tips_mean$rate <- with(tips_mean, tip/total_bill)
+tips_mean
