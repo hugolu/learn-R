@@ -82,3 +82,25 @@ difftime(endDate, startDate, units="weeks")
 # convert Date into chars
 strDates <- as.character(dates)
 str(strDates)
+
+# 4.7 convert type
+# is.datatype(), as.datatype() for numeric, character, vector, matrix, data.frame, factor, logical
+
+a <- c(1,2,3)
+is.numeric(a)
+is.vector(a)
+
+a <- as.character(a)
+is.numeric(a)
+is.vector(a)
+is.character(a)
+
+# 4.8 - sort data
+
+leadership[order(leadership$age),]
+
+attach(leadership)
+leadership[order(gender, age),]   # ascend
+leadership[order(gender, -age),]  # descend
+detach(leadership)
+
