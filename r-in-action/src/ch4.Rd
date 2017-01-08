@@ -38,11 +38,10 @@ leadership
 
 #fix(leadership) # manager >> managerID
 #names(leadership)[2] <- "testDate"
-names(leadership)[6:10] <- c("item1", "item2", "item3", "item4", "item5")
+names(leadership)[6:8] <- c("item1", "item2", "item3")
 
 library(plyr)
-leadership <- rename(leadership,
-                    c(manager="managerID", date="testDate"))
+leadership <- rename(leadership, c(q4="item4", q5="item5"))
 leadership
 
 # 4.5 - default values
@@ -58,3 +57,28 @@ sum(x, na.rm=TRUE)          # 6
 
 newdata <- na.omit(leadership)
 newdata
+
+# 4.6 - Date
+
+dates <- as.Date(c("2007-06-22", "2004-02-13"))
+dates
+
+strDates <- c("01/05/1965", "08/16/1975")
+dates <- as.Date(strDates, "%m/%d/%Y")
+dates
+
+leadership$date <- as.Date(leadership$date, "%m/%d/%y")
+leadership
+
+date()
+today <- Sys.Date()
+format(today, "%B %d %Y (%A)")
+
+startDate <- as.Date("2004-02-13")
+endDate <- as.Date("2011-01-22")
+endDate - startDate
+difftime(endDate, startDate, units="weeks")
+
+# convert Date into chars
+strDates <- as.character(dates)
+str(strDates)
