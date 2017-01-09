@@ -83,7 +83,7 @@ difftime(endDate, startDate, units="weeks")
 strDates <- as.character(dates)
 str(strDates)
 
-# 4.7 convert type
+# 4.7 - convert type
 # is.datatype(), as.datatype() for numeric, character, vector, matrix, data.frame, factor, logical
 
 a <- c(1,2,3)
@@ -104,3 +104,55 @@ leadership[order(gender, age),]   # ascend
 leadership[order(gender, -age),]  # descend
 detach(leadership)
 
+# 4.9 - combine data
+dataframeA <- data.frame(id=c(1, 2, 3), name=c('A', 'B', 'C'))
+dataframeB <- data.frame(id=c(1, 2, 3), age=c(21, 22, 23))
+dataframeC <- data.frame(id=c(4, 5, 6), name=c('D', 'E', 'F'))
+
+merge(dataframeA, dataframeB, by="id")
+cbind(dataframeA, dataframeB)
+rbind(dataframeA, dataframeC)
+
+# 4.10 - subset
+
+# dataframe[row indices, column indices]
+# dataframe[           , column indices]  # take all rows
+# dataframe[row indices,               ]  # take all columns
+leadership[, 6:10]
+leadership[2:4, ]
+
+myvars <- c('item1', 'item2', 'item3', 'item4', 'item5')
+leadership[myvars]
+
+myvars <- paste('item', 1:5, sep='')
+leadership[myvars]
+
+# drop variables
+myvars <- names(leadership) %in% c('item3', 'item4')
+myvars
+leadership[!myvars]   # remove 'item3', 'item4'
+leadership[c(-8,-9)]  # remove column 8, 9
+
+mydata <- leadership
+mydata$item3 <- NULL  # defined as NULL
+mydata$item4 <- NULL  # defined as NULL
+mydata
+
+# select
+leadership[1:3, ]     # choose 1~3 rows
+
+attach(leadership)
+leadership[gender == 'M' & age > 30, ]  # male, > 30 years old
+detach(leadership)
+
+startdate <- as.Date('2009-01-01')
+enddate <- as.Date('2009-10-31')
+leadership[which(leadership$date >= startdate & leadership$date <= enddate), ]
+
+# subset
+subset(leadership, gender == 'M')
+subset(leadership, gender == 'M' & age > 35)
+subset(leadership, gender == 'M' & age > 35, select=gender:item4)
+
+# sampling
+leadership[sample(1:nrow(leadership), 3, replace=FALSE), ] # take 3 rows randomly
