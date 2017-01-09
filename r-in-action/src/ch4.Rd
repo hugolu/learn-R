@@ -156,3 +156,8 @@ subset(leadership, gender == 'M' & age > 35, select=gender:item4)
 
 # sampling
 leadership[sample(1:nrow(leadership), 3, replace=FALSE), ] # take 3 rows randomly
+
+# 4.11 - SQL 
+library(sqldf)
+sqldf("select * from mtcars where carb=1 order by mpg", row.names=TRUE)
+sqldf("select avg(mpg) as avg_mpg, avg(disp) as avg_disp, gear from mtcars where cyl in (4, 6) group by gear")
