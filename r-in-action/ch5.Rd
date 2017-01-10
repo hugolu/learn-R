@@ -47,3 +47,36 @@ max(x)
 y <- scale(x, center=TRUE, scale=TRUE)
 mean(y)
 sd(y)
+
+# 5.2.3 distribution
+runif(5)
+runif(5)
+
+set.seed(1234)  # reproducible results
+runif(5)        # [1] 0.1137034 0.6222994 0.6092747 0.6233794 0.8609154
+
+# 5.2.4 char processing
+x <- c("ab", "cde", "fghij")
+length(x)   # 3 elements
+nchar(x)    # 2,3,4 chars for each elements
+
+x <- "abcdef"
+substr(x, 2, 4)
+substr(x, 2, 4) <- "222222" # replace char 2~4
+x
+
+grep("abc", c("aaBcc", "aabcc", "abccc"), fixed=TRUE)
+grep("a.c", c("aaBcc", "aabcc", "abccc"), fixed=FALSE)
+
+sub("\\s",".","Hello There")
+
+strsplit("abc", "")
+
+paste("x", 1:3,sep="")
+paste("x", 1:3,sep="M")
+paste("Today is", date())
+
+toupper("Hello World")
+tolower("Hello World")
+
+
