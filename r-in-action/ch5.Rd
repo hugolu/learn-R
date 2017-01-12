@@ -129,3 +129,35 @@ roster
 
 options(digits=2)
 roster[order(roster$score, decreasing = TRUE),]
+
+# 5.4 control flow
+
+## 5.4.1 repeat and loop
+
+for (i in 1:3) print(i)
+
+i <- 3
+while (i > 0) {print(i); i <- i - 1}
+
+# 5.4.2 conditional
+
+grade <- c('A', 'B', 'B', 'C')
+if (is.character(grade)) grade <- as.factor(grade)
+if (!is.factor(grade)) grade <- as.factor(grade) else print("Grade already is a factor")
+
+score <- 0.7
+outcome <- ifelse (score > 0.5, "passed", "falsed")
+outcome
+
+feelings <- c("sad", "afraid")
+for (i in feelings) {
+  print(
+    switch(i,
+      happy   = "I am glad you are happy",
+      afraid  = "There is nothing to fear",
+      sad     = "Cheer up",
+      angry   = "Calm down now"
+    )
+  )
+}
+
