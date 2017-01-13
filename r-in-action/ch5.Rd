@@ -161,3 +161,33 @@ for (i in feelings) {
   )
 }
 
+# 5.5 function
+mydate <- function(type="logn") {
+  switch(type,
+    long  = format(Sys.time(), "%A %B %d %Y"),
+    short = format(Sys.time(), "%m-%d-%y"),
+    cat(type, "is not a recognized type\n")
+  )
+}
+
+mydate()
+mydate("long")
+mydate("short")
+mydate("medium")
+
+# 5.6 aggregate & reshape
+
+# 5.6.1 matrix transpose
+mat <- matrix(1:9, nrow=3)
+mat
+t(mat)
+
+# 5.6.1 aggregate
+options(digits=3)
+attach(mtcars)
+aggregate(mtcars, by=list(cyl), FUN=mean, na.rm=TRUE)
+aggregate(mtcars, by=list(gear), FUN=mean, na.rm=TRUE)
+aggregate(mtcars, by=list(cyl, gear), FUN=mean, na.rm=TRUE)
+detach(mtcars)
+
+
