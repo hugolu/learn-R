@@ -190,4 +190,16 @@ aggregate(mtcars, by=list(gear), FUN=mean, na.rm=TRUE)
 aggregate(mtcars, by=list(cyl, gear), FUN=mean, na.rm=TRUE)
 detach(mtcars)
 
+# 5.6.2 reshape2
+mydata <- data.frame(ID=c(1,1,2,2), Time=c(1,2,1,2), X1=c(5,3,6,2), X2=c(6,5,1,4))
 
+library(reshape2)
+md <- melt(mydata, id=c("ID", "Time"))
+md
+
+dcast(md, ID~variable, mean)
+dcast(md, Time~variable, mean)
+dcast(md, ID~Time, mean)
+dcast(md, ID+Time~variable)
+dcast(md, ID+variable~Time)
+dcast(md, ID~variable+Time)
