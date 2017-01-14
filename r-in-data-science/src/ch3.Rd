@@ -113,3 +113,17 @@ ratio_fun <- function(x) { sum(x$tip) / sum(x$total_bill) }
 
 ddply(tips, 'sex', ratio_fun)
 ddply(tips, sex~smoker, ratio_fun)
+
+# paste, cat
+d = data.frame(x = c(1,2,3), y = c('a','b','c'))
+cat(paste(d$y, d$x, sep = '='), sep = '\n')
+
+# file I/O
+f <- file('/tmp/file.txt')
+cat(1:3, sep = '\n', file = f)
+scan(file = f)
+close(f)
+
+
+
+input 
