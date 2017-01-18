@@ -117,8 +117,7 @@ roster$grade[score >= y[1]] <- "A"
 roster$grade[score < y[1] & score >= y[2]] <- "B"
 roster$grade[score < y[2] & score >= y[3]] <- "C"
 roster$grade[score < y[3] & score >= y[4]] <- "D"
-roster$grade[score < y[2] & score >= y[3]] <- "E"
-roster$grade[score < y[4]] <- "F"
+roster$grade[score < y[4]] <- "E"
 
 name <- strsplit((roster$Student), " ")
 Lastname <- sapply(name, "[", 2)
