@@ -30,3 +30,11 @@ describe(mtcars[myvars])
 # pastecs
 library(pastecs)
 stat.desc(mtcars[myvars])
+
+# psych
+library(psych)
+describe(mtcars[myvars])
+
+# aggregate
+aggregate(mtcars[myvars], by=list(at=mtcars$am), mean)
+aggregate(mtcars[myvars], by=list(at=mtcars$am), sd)
